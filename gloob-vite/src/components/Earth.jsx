@@ -37,59 +37,114 @@ export default function Earth(props) {
       <mesh geometry={nodes.asia.geometry}
         onPointerEnter={() => setAsiaMaterial(materials.continent_selected)}
         onPointerLeave={() => setAsiaMaterial(materials.continent)}
+        onClick={() => props.openDrawerWithTitle('Asia')}
         material={asiaMaterial} scale={6.37} />
       <mesh geometry={nodes.south_america.geometry}
         onPointerEnter={() => setSouthAmericaMaterial(materials.continent_selected)}
         onPointerLeave={() => setSouthAmericaMaterial(materials.continent)}
+        onClick={() => props.openDrawerWithTitle('South America')}
         material={southAmericaMaterial} scale={6.37} />
       <mesh geometry={nodes.australia.geometry}
         onPointerEnter={() => setAustraliaMaterial(materials.continent_selected)}
         onPointerLeave={() => setAustraliaMaterial(materials.continent)}
+        onClick={() => props.openDrawerWithTitle('Australia')}
         material={australiaMaterial} scale={6.37} />
       <mesh geometry={nodes.madagascar.geometry} material={madagascarMaterial}
         onPointerEnter={() => setMadagascarMaterial(materials.continent_selected)}
-        onPointerLeave={() => setMadagascarMaterial(materials.continent)} scale={6.37} />
+        onPointerLeave={() => setMadagascarMaterial(materials.continent)} scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Madagascar')}
+        />
       <mesh geometry={nodes.indonesia.geometry}
         onPointerEnter={() => setIndonesiaMaterial(materials.continent_selected)}
-        onPointerLeave={() => setIndonesiaMaterial(materials.continent)} material={indonesiaMaterial} scale={6.37} />
+        onPointerLeave={() => setIndonesiaMaterial(materials.continent)} 
+        material={indonesiaMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Indonesia')}
+      />
       <mesh geometry={nodes.iceland.geometry}
         onPointerEnter={() => setIcelandMaterial(materials.continent_selected)}
-        onPointerLeave={() => setIcelandMaterial(materials.continent)} material={icelandMaterial} scale={6.37} />
+        onPointerLeave={() => setIcelandMaterial(materials.continent)} 
+        material={icelandMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Iceland')}
+      />
       <mesh geometry={nodes.phillipines.geometry}
         onPointerEnter={() => setPhillipinesMaterial(materials.continent_selected)}
-        onPointerLeave={() => setPhillipinesMaterial(materials.continent)} material={phillipinesMaterial} scale={6.37} />
-      <mesh geometry={nodes.indonesia001.geometry} onPointerEnter={() => setIndonesiaMaterial(materials.continent_selected)}
-        onPointerLeave={() => setIndonesiaMaterial(materials.continent)} material={indonesiaMaterial} scale={6.37} />
+        onPointerLeave={() => setPhillipinesMaterial(materials.continent)} 
+        material={phillipinesMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Phillipines')}
+      />
+      <mesh geometry={nodes.indonesia001.geometry} 
+        onPointerEnter={() => setIndonesiaMaterial(materials.continent_selected)}
+        onPointerLeave={() => setIndonesiaMaterial(materials.continent)} 
+        material={indonesiaMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Indonesia')}
+      />
       <mesh geometry={nodes.papa_new_guinea.geometry}
         onPointerEnter={() => setPapaNewGuineaMaterial(materials.continent_selected)}
-        onPointerLeave={() => setPapaNewGuineaMaterial(materials.continent)} material={papaNewGuineaMaterial} scale={6.37} />
+        onPointerLeave={() => setPapaNewGuineaMaterial(materials.continent)} 
+        material={papaNewGuineaMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Papa New Guinea')}
+      />
       <mesh geometry={nodes.africa.geometry}
         onPointerEnter={() => setAfricaMaterial(materials.continent_selected)}
-        onPointerLeave={() => setAfricaMaterial(materials.continent)} material={africaMaterial} scale={6.37} />
+        onPointerLeave={() => setAfricaMaterial(materials.continent)} 
+        material={africaMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Africa')}
+      />
       <mesh geometry={nodes.new_zealand001.geometry}
         onPointerEnter={() => setNewZealandMaterial(materials.continent_selected)}
         onPointerLeave={() => setNewZealandMaterial(materials.continent)}
-        material={newZealandMaterial} scale={6.37} position={[0, -0.2, 0.1]} />
+        material={newZealandMaterial} scale={6.37} position={[0, -0.2, 0.1]} 
+        onClick={() => props.openDrawerWithTitle('New Zealand')}
+      />
       <mesh geometry={nodes.ocean.geometry} material={materials.water} rotation={[0, -1.13, 0]} scale={6.09} />
       <mesh geometry={nodes.india.geometry}
         onPointerEnter={() => setIndiaMaterial(materials.continent_selected)}
-        onPointerLeave={() => setIndiaMaterial(materials.continent)} material={indiaMaterial} scale={6.37} />
+        onPointerLeave={() => setIndiaMaterial(materials.continent)} 
+        material={indiaMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('India')}  
+      />
       <mesh geometry={nodes.china.geometry}
         onPointerEnter={() => setChinaMaterial(materials.continent_selected)}
-        onPointerLeave={() => setChinaMaterial(materials.continent)} material={chinaMaterial} scale={6.37} />
+        onPointerLeave={() => setChinaMaterial(materials.continent)} 
+        material={chinaMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('China')} 
+      />
       <mesh geometry={nodes.middle_east.geometry}
         onPointerEnter={() => setMiddleEastMaterial(materials.continent_selected)}
-        onPointerLeave={() => setMiddleEastMaterial(materials.continent)} material={middleEastMaterial} scale={6.37} />
+        onPointerLeave={() => setMiddleEastMaterial(materials.continent)} 
+        material={middleEastMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Middle East')}   
+      />
       <mesh geometry={nodes.europe.geometry}
         onPointerEnter={() => setEuropeMaterial(materials.continent_selected)}
         onPointerLeave={() => setEuropeMaterial(materials.continent)}
-        material={europeMaterial} scale={6.37} />
+        material={europeMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Europe')}   
+      />
       <mesh geometry={nodes.north_america002.geometry}
         onPointerEnter={() => setNorthAmericaMaterial(materials.continent_selected)}
-        onPointerLeave={() => setNorthAmericaMaterial(materials.continent)} material={northAmericaMaterial} scale={6.37} />
+        onPointerLeave={() => setNorthAmericaMaterial(materials.continent)} 
+        material={northAmericaMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('North America')} 
+      />
       <mesh geometry={nodes.central_america.geometry}
         onPointerEnter={() => setCentralAmericaMaterial(materials.continent_selected)}
-        onPointerLeave={() => setCentralAmericaMaterial(materials.continent)} material={centralAmericaMaterial} scale={6.37} />
+        onPointerLeave={() => setCentralAmericaMaterial(materials.continent)} 
+        material={centralAmericaMaterial} 
+        scale={6.37} 
+        onClick={() => props.openDrawerWithTitle('Central America')}   
+      />
       <mesh geometry={nodes.continent_selected.geometry} material={materials.continent_selected} />
       <mesh geometry={nodes.continent_white.geometry} material={materials.continent_white} position={[0, 0, 3.18]} />
     </group>

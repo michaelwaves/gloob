@@ -10,6 +10,8 @@ import Earth from './components/Earth'
 import Tree from './components/Tree'
 import Ambulance from './components/Ambulance'
 
+import {Drawer} from '@mui/material'
+
 const Cube = () => (
   <mesh>
     <boxBufferGeometry args={[1, 1, 1]} />
@@ -18,11 +20,26 @@ const Cube = () => (
 
 )
 function App() {
+
+  const [openDrawer, setOpenDrawer] = useState(false)
+
+  const [drawerTitle, setDrawerTitle] = useState('')
+
   const [count, setCount] = useState(1)
   const [trees, setTrees] = useState([])
+  
+  
   function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
+
+
+  let openDrawerWithTitle = (title) => {
+    setOpenDrawer(true)
+    setDrawerTitle(title)
+  }
+  
+  
   useEffect(() => {
     const randx = randomIntFromInterval(-10, 10)
     const randy = randomIntFromInterval(-10, 10)
@@ -32,11 +49,18 @@ function App() {
 
   return (
     <div className="">
+      <Drawer
+        open={openDrawer}
+        anchor='right'
+        onClose={() => setOpenDrawer(false)}
+      >
+        <h1>{drawerTitle}</h1>
+      </Drawer>
 
       <div className='absolute top-0 left-0 bg-blue-900 w-screen h-screen rounded-lg'>
         <Canvas>
           <OrbitControls></OrbitControls>
-          <Scene></Scene>
+          <Scene openDrawerWithTitle={openDrawerWithTitle}></Scene>
           {trees}
           <Ambulance />
         </Canvas>
@@ -57,12 +81,12 @@ function App() {
   )
 }
 
-const Scene = () => {
+const Scene = (props) => {
 
   return (
     <>
       <ambientLight intensity={0.5} />
-      <Earth />
+      <Earth openDrawerWithTitle={props.openDrawerWithTitle}/>
       <Stars />
     </>
   )
