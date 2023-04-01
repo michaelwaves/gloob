@@ -95,7 +95,7 @@ function App() {
       </Button>
 
       <Dalle />
-      <GPT />
+      <GPT location={"british columbia"} />
       <Verbwire />
     </>
   )

@@ -8,12 +8,17 @@ import PublicIcon from '@mui/icons-material/Public';
 
 let OPENAI_API_KEY = 123
 
-export default function GPT() {
+export default function GPT({location}) {
     const openai = new OpenAIApi(new Configuration({
         apiKey: OPENAI_API_KEY,
     }));
     const [prompt, setPrompt] = useState("");
-    const [messages, setMessages] = useState([{ role: "assistant", content: "Hello, how can I help you?" }]);
+    const [messages, setMessages] = useState([
+        {role: "system", content: "please keep the subject of the conversation on " + location + "with a focus on sustainability and the environment."},
+        { role: "assistant", content: "Hello, how can I help you?" },
+        
+    
+    ]);
 
 
     const messagesEndRef = useRef()
