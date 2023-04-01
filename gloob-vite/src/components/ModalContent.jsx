@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, TextField, Box, Grid, Typography } from "@mui/material";
+import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, TextField, Box, Grid, Typography, Divider } from "@mui/material";
 import { useState } from "react";
 import GPT from "./GPT";
 
@@ -105,16 +105,21 @@ export default function ModalContent (props) {
 
                             <Grid xs={7} item>
                                 <Typography sx={{color: 'white', textAlign: 'center'}}>
-                                    Percentage decrease in humid primary forest between {props.data?.pictures[0].year} and {props.data?.pictures[2].year}: {props.data?.percentageDecrease}%
+                                    Percentage decrease in tree cover between {props.data?.pictures[0].year} and {props.data?.pictures[2].year}: {props.data?.percentageDecrease}%
                                 </Typography>
                             </Grid>
                         </Grid>
 
-                        <Typography variant="h4" sx={{textAlign: 'center'}}>
+                        <Divider sx={{ borderBottomWidth: 3, borderColor: 'white', mx: 5,  my: 2 }} />
+                        <Typography variant="h6" sx={{textAlign: 'center', color: 'white'}}>
                             Learn more
+                        </Typography>
+                        <Typography variant="body1" sx={{textAlign: 'center', color: 'white', mb: 2}}>
+                            Ask Glooby any questions you may have
                         </Typography>
                         <GPT/>
                     </DialogContent>
+                    
                 )
             }
 

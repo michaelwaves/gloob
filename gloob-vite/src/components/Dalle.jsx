@@ -3,11 +3,12 @@ import env from "react-dotenv";
 import { useState, useRef, useCallback } from "react";
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
+import { OPENAI_API_KEY } from "../APIKey";
 export default function Dalle({ country, ...props }) {
     const [prompt, setPrompt] = useState("");
     const picturePrompt = `draw a beautiful picture of trees and wildlife found in ${country}`
     const configuration = new Configuration({
-        apiKey: "",
+        apiKey: OPENAI_API_KEY,
     });
     const openai = new OpenAIApi(configuration);
     const [url, setUrl] = useState("");
