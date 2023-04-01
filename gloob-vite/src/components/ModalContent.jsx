@@ -111,6 +111,7 @@ export default function ModalContent (props) {
                         </Grid>
                         <GPT/>
                     </DialogContent>
+                    
                 )
             }
 

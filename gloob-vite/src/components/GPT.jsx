@@ -1,9 +1,10 @@
 import { Configuration, OpenAIApi } from "openai";
 import { useState } from "react";
+import { OPENAI_API_KEY } from "../APIKey";
 
 export default function GPT() {
     const openai = new OpenAIApi(new Configuration({
-        apiKey: "",
+        apiKey: OPENAI_API_KEY,
     }));
     const [prompt, setPrompt] = useState("");
     const [messages, setMessages] = useState([{ role: "assistant", content: "Hello, how can I help you?" }]);
@@ -31,7 +32,8 @@ export default function GPT() {
     return (
         <div>
 
-            <div className="flex flex-col justify-center space-y-2 w-1/2">
+            <div className="flex flex-col justify-center space-y-2 w-1/2 m-auto">
+                <h1 className="text-2xl font-bold">Ask Gloob to learn more about </h1>
                 <form onSubmit={handleSubmit} className="space-x-3 p-2 flex flex-row justify-center items-center">
                     <input type="text" name="prompt" value={prompt}
                         className="input-box"
