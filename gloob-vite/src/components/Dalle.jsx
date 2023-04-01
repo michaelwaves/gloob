@@ -1,8 +1,11 @@
 import { Configuration, OpenAIApi } from "openai";
 import env from "react-dotenv";
-import { useState } from "react";
-export default function Dalle() {
+import { useState, useRef, useCallback } from "react";
+import { saveAs } from 'file-saver';
+import { toPng } from 'html-to-image';
+export default function Dalle({ country, ...props }) {
     const [prompt, setPrompt] = useState("");
+    const picturePrompt = `draw a beautiful picture of trees and wildlife found in ${country}`
     const configuration = new Configuration({
         apiKey: "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",
     });
@@ -20,14 +23,35 @@ export default function Dalle() {
         setUrl(image_url);
     }
 
+    const downloadImage = (e) => {
+        e.preventDefault();
+        saveAs(url, 'image.jpg') // Put your image url here.
+    }
+    const ref = useRef(null)
+
+    const downloadPng = useCallback(() => {
+        if (ref.current === null) {
+            return
+        } toPng(ref.current, { cacheBust: true, })
+            .then((url) => {
+                const link = document.createElement('a')
+                link.download = 'image.png'
+                link.href = url
+                link.click()
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [ref]);
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="prompt" value={prompt}
                     onChange={(e) => setPrompt(e.target.value)} />
-                <button type="submit">Submit</button>
+                <button type="submit">Generate Image!</button>
             </form>
-            <img src={url} />
+            <img src={url} onClick={downloadPng} ref={ref} />
         </div>
     )
 }

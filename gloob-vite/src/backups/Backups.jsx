@@ -23,3 +23,23 @@
           Click to add a random <code>TREE</code>
         </p>
       </div>
+
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  const message = prompt
+  const newMessages = []
+  const oldMessages = messages
+  newMessages.push({ role: "user", content: message })
+  setMessages([...oldMessages, ...newMessages]);
+  console.log(prompt)
+
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: messages,
+  });
+  console.log(response)
+  const completion = response.data.choices[0].message.content;
+  newMessages.push({ role: "assistant", content: completion })
+  setMessages([...oldMessages, ...newMessages]);
+  setPrompt("");
+}

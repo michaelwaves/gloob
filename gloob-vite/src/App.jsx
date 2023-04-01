@@ -20,6 +20,7 @@ import { Drawer, Box, Typography, Button } from '@mui/material'
 import Dalle from './components/Dalle'
 import DrawerContent from './components/DrawerContent'
 import GPT from './components/GPT'
+import Verbwire from './components/Verbwire'
 
 const CameraSettings = () => {
   const { camera } = useThree()
@@ -95,6 +96,7 @@ function App() {
 
       <Dalle />
       <GPT />
+      <Verbwire />
     </>
   )
 }
