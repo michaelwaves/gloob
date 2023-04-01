@@ -5,7 +5,6 @@ import BC3 from '../src/assets/images/Canada/BC_2020.png'
 import BC4 from '../src/assets/images/Canada/BC_forestloss.png'
 
 
-
 export const data = {
     "china": {
         center: [35.8593, 104.14],
