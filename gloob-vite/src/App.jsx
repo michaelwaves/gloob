@@ -10,7 +10,11 @@ import Earth from './components/Earth'
 import Tree from './components/Tree'
 import Ambulance from './components/Ambulance'
 
+//material ui
 import { Drawer } from '@mui/material'
+
+//components
+import Dalle from './components/Dalle'
 
 const Cube = () => (
   <mesh>
@@ -66,17 +70,7 @@ function App() {
         </Canvas>
 
       </div>
-      <div className="card relative">
-        <button onClick={() => setCount((count) => count + 1)}>
-          tree count is {count}
-        </button>
-        <p>
-          Click to add a random <code>TREE</code>
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </div>
   )
 }
