@@ -1,13 +1,13 @@
 import { Configuration, OpenAIApi } from "openai";
 import env from "react-dotenv";
 import { useState } from "react";
-
 export default function Dalle() {
     const [prompt, setPrompt] = useState("");
     const configuration = new Configuration({
-        apiKey: env.OPENAI_API_KEY,
+        apiKey: "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",
     });
     const openai = new OpenAIApi(configuration);
+    const [url, setUrl] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,7 +16,8 @@ export default function Dalle() {
             n: 1,
             size: "1024x1024",
         });
-        image_url = response.data.data[0].url;
+        const image_url = response.data.data[0].url;
+        setUrl(image_url);
     }
 
     return (
@@ -26,7 +27,7 @@ export default function Dalle() {
                     onChange={(e) => setPrompt(e.target.value)} />
                 <button type="submit">Submit</button>
             </form>
-            <img src={image_url} />
+            <img src={url} />
         </div>
     )
 }

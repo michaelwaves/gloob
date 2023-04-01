@@ -5,6 +5,7 @@ import './App.css'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stars, Html } from '@react-three/drei'
 import * as THREE from 'three';
+import env from 'react-dotenv'
 
 //models
 import Earth from './components/Earth'
@@ -18,6 +19,7 @@ import { Drawer, Box, Typography, Button } from '@mui/material'
 //components
 import Dalle from './components/Dalle'
 import DrawerContent from './components/DrawerContent'
+import GPT from './components/GPT'
 
 const CameraSettings = () => {
   const { camera } = useThree()
@@ -64,24 +66,26 @@ function App() {
 
   return (
     <>
-      <Typography sx={{position: 'absolute', top: 0, left: 0, color: 'white', textTransform: 'uppercase', fontWeight: 700}} variant="h5">
+      <Typography sx={{ position: 'absolute', top: 0, left: 0, color: 'white', textTransform: 'uppercase', fontWeight: 700 }} variant="h5">
         Environment
       </Typography>
       <DrawerContent openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} drawerTitle={drawerTitle} />
       <Canvas>
         <Suspense fallback={null}>
           <CameraSettings />
-          <OrbitControls enableZoom={false}></OrbitControls>
+          {/*<OrbitControls enableZoom={false}></OrbitControls>*/}
           <Scene openDrawerWithTitle={openDrawerWithTitle} spin={spin} setSpin={setSpin} />
           {/* <Ambulance /> */}
         </Suspense>
-    
+
       </Canvas>
 
-      <Button onClick={() => setSpin(!spin)} sx={{position: 'absolute', bottom: 0, mb: 2}} variant="contained">
+      <Button onClick={() => setSpin(!spin)} sx={{ position: 'absolute', bottom: 0, mb: 2 }} variant="contained">
         {spin ? 'Stop' : 'Spin'}
       </Button>
 
+      <Dalle />
+      <GPT />
     </>
   )
 }
