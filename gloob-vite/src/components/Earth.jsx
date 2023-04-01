@@ -48,7 +48,7 @@ export default function Earth(props) {
 
 
 
-    <group {...props} dispose={null} position={[0, 0, -15]} ref={earthRef}>
+    <group {...props} dispose={null} position={[0, 0, -5]} ref={earthRef}>
       <mesh geometry={nodes.asia.geometry}
         onPointerEnter={() => {setAsiaMaterial(materials.continent_selected)}}
         onPointerLeave={() => setAsiaMaterial(materials.continent)}

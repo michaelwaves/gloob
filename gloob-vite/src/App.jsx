@@ -60,7 +60,6 @@ function App() {
   }, [count])
 
 
-
   return (
     <>
       <Drawer
@@ -78,9 +77,9 @@ function App() {
       <Canvas>
         <Suspense fallback={null}>
           <CameraSettings />
-          <OrbitControls enableZoom={false}></OrbitControls>
+          {/* <OrbitControls enableZoom={false}></OrbitControls> */}
           <Scene openDrawerWithTitle={openDrawerWithTitle} />
-          <Ambulance />
+          {/* <Ambulance /> */}
         </Suspense>
       </Canvas>
 
@@ -94,8 +93,8 @@ const Scene = (props) => {
 
   return (
     <>
-      <pointLight color="#f6f3ea" position={[2, 0, 6]} intensity={1.5} />
-      <ambientLight intensity={0.5} />
+      <pointLight color="#f6f3ea" position={[17, 0, 9]} intensity={1.5} />
+      {/* <ambientLight intensity={0.5} /> */}
       <Earth openDrawerWithTitle={props.openDrawerWithTitle}/>
       <Stars 
         radius={300} 
