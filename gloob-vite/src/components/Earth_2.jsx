@@ -5,8 +5,9 @@ Command: npx gltfjsx@6.1.4 earth_2.gltf
 
 import React, { useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
+import { DEFAULTS } from '@react-three/fiber/dist/declarations/src/core/utils'
 
-export function Model(props) {
+export default function Earth2(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/earth_2.gltf')
   const { actions } = useAnimations(animations, group)
