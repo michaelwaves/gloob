@@ -117,7 +117,7 @@ export default function ModalContent (props) {
                         <Typography variant="body1" sx={{textAlign: 'center', color: 'white', mb: 2}}>
                             Ask Glooby any questions you may have
                         </Typography>
-                        <GPT/>
+                        <GPT location={props.data?.title}/>
                     </DialogContent>
                     
                 )

@@ -3,7 +3,9 @@ import env from "react-dotenv";
 import { useState, useRef, useCallback } from "react";
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
-import { OPENAI_API_KEY } from "../APIKey";
+//import { OPENAI_API_KEY } from "../APIKey";
+
+let OPENAI_API_KEY = 123
 export default function Dalle({ country, ...props }) {
     const [prompt, setPrompt] = useState("");
     const picturePrompt = `draw a beautiful picture of trees and wildlife found in ${country}`

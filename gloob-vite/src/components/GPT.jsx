@@ -2,10 +2,11 @@ import { Configuration, OpenAIApi } from "openai";
 import { useState, useRef, useEffect } from "react";
 import SendIcon from '@mui/icons-material/Send';
 import { Button, Box, TextField } from "@mui/material";
-import { OPENAI_API_KEY } from "../APIKey";
+//import { OPENAI_API_KEY } from "../APIKey";
 
 import PublicIcon from '@mui/icons-material/Public';
 
+let OPENAI_API_KEY = 123
 
 export default function GPT({location}) {
     const openai = new OpenAIApi(new Configuration({
