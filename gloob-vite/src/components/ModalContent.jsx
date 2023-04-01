@@ -80,7 +80,7 @@ export default function ModalContent (props) {
 
                             {
                                 props.data?.pictures?.map((element, i) => (
-                                    <Grid item xs={4} >
+                                    <Grid item xs={4} key={i}>
                                         <img
                                             src={element?.img}
                                             style={{width: '100%', textAlign: 'center', borderRadius: 1}}

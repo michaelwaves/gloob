@@ -78,8 +78,8 @@ export default function DrawerContent (props) {
 
                     {
                         props.drawerTitle !== '' && data[props.drawerTitle].coordinates.map((element, i) => (
-
                             <Marker 
+                                key={i}
                                 position={element.coordinate} 
                                 eventHandlers={{
                                     click: (e) => {
@@ -94,8 +94,7 @@ export default function DrawerContent (props) {
                         ))
                     }
 
-               
-
+            
                 </MapContainer>
                 
             </Drawer>
