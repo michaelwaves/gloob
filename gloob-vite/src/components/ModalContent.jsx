@@ -35,7 +35,7 @@ export default function ModalContent (props) {
 
             {
                 togglePictures ? (
-                    <DialogContent sx={{textAlign: 'center', color: 'white'}}>
+                    <DialogContent sx={{textAlign: 'center', color: 'white', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
                         <DialogContentText sx={{color: 'white', mb: 2}}>
                             Guess the year this picture was taken
                         </DialogContentText>
@@ -109,6 +109,10 @@ export default function ModalContent (props) {
                                 </Typography>
                             </Grid>
                         </Grid>
+
+                        <Typography variant="h4" sx={{textAlign: 'center'}}>
+                            Learn more
+                        </Typography>
                         <GPT/>
                     </DialogContent>
                 )
