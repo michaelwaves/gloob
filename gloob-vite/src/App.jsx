@@ -16,6 +16,7 @@ import { Drawer, Box, Typography } from '@mui/material'
 
 //components
 import Dalle from './components/Dalle'
+import DrawerContent from './components/DrawerContent'
 
 const CameraSettings = () => {
   const { camera } = useThree()
@@ -51,7 +52,6 @@ function App() {
     setDrawerTitle(title)
   }
 
-
   useEffect(() => {
     const randx = randomIntFromInterval(-10, 10)
     const randy = randomIntFromInterval(-10, 10)
@@ -62,18 +62,10 @@ function App() {
 
   return (
     <>
-      <Drawer
-        open={openDrawer}
-        anchor='right'
-        onClose={() => setOpenDrawer(false)}
-
-        sx={{position: 'absolute', width: '100%', height: '100%', top: 0, left: 0}}
-      >
-        <Box>
-          <Typography>{drawerTitle}</Typography>
-        </Box>
-      </Drawer>
-
+      <Typography sx={{position: 'absolute', top: 0, left: 0, color: 'white', textTransform: 'uppercase', fontWeight: 700}} variant="h5">
+        Environment
+      </Typography>
+      <DrawerContent openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} drawerTitle={drawerTitle} />
       <Canvas>
         <Suspense fallback={null}>
           <CameraSettings />
