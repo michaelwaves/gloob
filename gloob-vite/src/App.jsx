@@ -10,9 +10,18 @@ import * as THREE from 'three';
 import Earth from './components/Earth'
 import Tree from './components/Tree'
 import Ambulance from './components/Ambulance'
+import { useThree } from "@react-three/fiber";
+//material ui
+import { Drawer, Box, Typography } from '@mui/material'
 
-import {Box, Drawer, Typography} from '@mui/material'
+//components
+import Dalle from './components/Dalle'
 
+const CameraSettings = () => {
+  const { camera } = useThree()
+  camera.position.set(0, 0, 15)
+  return null
+}
 
 
 const Cube = () => (
@@ -50,6 +59,8 @@ function App() {
     setTrees([...trees, <Tree key={trees.length} position={[randx, randy, randz]} />])
   }, [count])
 
+
+
   return (
     <>
       <Drawer
@@ -64,12 +75,14 @@ function App() {
         </Box>
       </Drawer>
 
-
-        <Canvas>
-          <Suspense fallback={null}>
-            <Scene openDrawerWithTitle={openDrawerWithTitle} />  
-          </Suspense>
-        </Canvas>
+      <Canvas>
+        <Suspense fallback={null}>
+          <CameraSettings />
+          <OrbitControls enableZoom={false}></OrbitControls>
+          <Scene openDrawerWithTitle={openDrawerWithTitle} />
+          <Ambulance />
+        </Suspense>
+      </Canvas>
 
 
 
