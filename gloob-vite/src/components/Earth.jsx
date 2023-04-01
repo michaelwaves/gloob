@@ -37,7 +37,7 @@ export default function Earth(props) {
       <mesh geometry={nodes.asia.geometry}
         onPointerEnter={() => setAsiaMaterial(materials.continent_selected)}
         onPointerLeave={() => setAsiaMaterial(materials.continent)}
-        material={asiaMaterial} scale={asiaMaterial == materials.continent_selected ? 7 : 6.37} />
+        material={asiaMaterial} scale={6.37} />
       <mesh geometry={nodes.south_america.geometry}
         onPointerEnter={() => setSouthAmericaMaterial(materials.continent_selected)}
         onPointerLeave={() => setSouthAmericaMaterial(materials.continent)}

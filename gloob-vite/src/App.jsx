@@ -31,9 +31,9 @@ function App() {
   }, [count])
 
   return (
-    <div className="App">
+    <div className="">
 
-      <div className='bg-blue-900 w-[80vh] h-[50vh] rounded-lg'>
+      <div className='absolute top-0 left-0 bg-blue-900 w-screen h-screen rounded-lg'>
         <Canvas>
           <OrbitControls></OrbitControls>
           <Scene></Scene>
