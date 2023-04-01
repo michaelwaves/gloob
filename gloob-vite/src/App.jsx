@@ -10,6 +10,7 @@ import * as THREE from 'three';
 import Earth from './components/Earth'
 import Tree from './components/Tree'
 import Ambulance from './components/Ambulance'
+import Atmosphere from './components/Atmosphere'
 import { useThree } from "@react-three/fiber";
 //material ui
 import { Drawer, Box, Typography } from '@mui/material'
@@ -107,6 +108,7 @@ const Scene = (props) => {
       <pointLight color="#f6f3ea" position={[17, 0, 9]} intensity={1.5} />
       {/* <ambientLight intensity={0.5} /> */}
       <Earth openDrawerWithTitle={props.openDrawerWithTitle} spin={props.spin} setSpin={props.setSpin} />
+      <Atmosphere spin={props.spin} />
       <Stars
         radius={300}
         depth={60}
