@@ -37,12 +37,11 @@ function App() {
         <Canvas>
           <OrbitControls></OrbitControls>
           <Scene></Scene>
-          {trees}
           <Ambulance />
         </Canvas>
 
       </div>
-      <div className="card">
+      <div className="card relative">
         <button onClick={() => setCount((count) => count + 1)}>
           tree count is {count}
         </button>
