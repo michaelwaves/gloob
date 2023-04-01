@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
+import * as THREE from 'three';
 
 //models
 import Earth from './components/Earth'
@@ -12,13 +13,15 @@ import Ambulance from './components/Ambulance'
 
 import {Box, Drawer, Typography} from '@mui/material'
 
+
+
 const Cube = () => (
   <mesh>
     <boxBufferGeometry args={[1, 1, 1]} />
     <meshStandardMaterial color="hotpink" />
   </mesh>
-
 )
+
 function App() {
 
   const [openDrawer, setOpenDrawer] = useState(false)
@@ -53,6 +56,8 @@ function App() {
         open={openDrawer}
         anchor='right'
         onClose={() => setOpenDrawer(false)}
+
+        sx={{position: 'absolute', width: '100%', height: '100%', top: 0, left: 0}}
       >
         <Box>
           <Typography>{drawerTitle}</Typography>
@@ -61,20 +66,12 @@ function App() {
 
 
         <Canvas>
-          <OrbitControls></OrbitControls>
-          <Scene openDrawerWithTitle={openDrawerWithTitle} />
-          <Ambulance />
+          <Suspense fallback={null}>
+            <Scene openDrawerWithTitle={openDrawerWithTitle} />  
+          </Suspense>
         </Canvas>
 
-      </div>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          tree count is {count}
-        </button>
-        <p>
-          Click to add a random <code>TREE</code>
-        </p>
-      </div> */}
+
 
     </>
   )
@@ -84,9 +81,17 @@ const Scene = (props) => {
 
   return (
     <>
+      <pointLight color="#f6f3ea" position={[2, 0, 6]} intensity={1.5} />
       <ambientLight intensity={0.5} />
       <Earth openDrawerWithTitle={props.openDrawerWithTitle}/>
-      <Stars />
+      <Stars 
+        radius={300} 
+        depth={60}
+        count={20000}
+        factor={7} 
+        saturation={0}
+        fade={true}
+      />
     </>
   )
 }
