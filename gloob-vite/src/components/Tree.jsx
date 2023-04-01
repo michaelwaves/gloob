@@ -12,13 +12,6 @@ export default function Tree(props) {
   const group = useRef()
   useFrame(() => {
     group.current.rotation.y += 0.01
-    if (group.current.position.z < 10) {
-      group.current.position.z += 0.05
-    }
-    if (group.current.position.z > -10) {
-      group.current.position.z -= 0.05
-    }
-
   })
   return (
     <group {...props} dispose={null} ref={group}>
