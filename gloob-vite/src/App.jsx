@@ -27,8 +27,8 @@ function App() {
 
   const [count, setCount] = useState(1)
   const [trees, setTrees] = useState([])
-  
-  
+
+
   function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
@@ -38,8 +38,8 @@ function App() {
     setOpenDrawer(true)
     setDrawerTitle(title)
   }
-  
-  
+
+
   useEffect(() => {
     const randx = randomIntFromInterval(-10, 10)
     const randy = randomIntFromInterval(-10, 10)
@@ -66,8 +66,8 @@ function App() {
           <Ambulance />
         </Canvas>
 
-
-      {/* <div className="card">
+      </div>
+      <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           tree count is {count}
         </button>
@@ -86,14 +86,7 @@ const Scene = (props) => {
     <>
       <ambientLight intensity={0.5} />
       <Earth openDrawerWithTitle={props.openDrawerWithTitle}/>
-      <Stars 
-        radius={300} 
-        depth={60}
-        count={20000}
-        factor={7} 
-        saturation={0}
-        fade={true}
-      />
+      <Stars />
     </>
   )
 }
