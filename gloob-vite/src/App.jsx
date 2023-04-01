@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Stars } from '@react-three/drei'
+import { OrbitControls, Stars, Html } from '@react-three/drei'
 import * as THREE from 'three';
 
 //models
@@ -69,11 +69,21 @@ function App() {
       <Canvas>
         <Suspense fallback={null}>
           <CameraSettings />
-          {/* <OrbitControls enableZoom={false}></OrbitControls> */}
-          <Scene openDrawerWithTitle={openDrawerWithTitle} />
+          <OrbitControls enableZoom={false}></OrbitControls>
+          <Scene openDrawerWithTitle={openDrawerWithTitle} spin={spin} setSpin={setSpin} />
           {/* <Ambulance /> */}
         </Suspense>
+        <Html>
+          <div className='fixed top-0 left-0'>
+            <button
+              onClick={() => setSpin(!spin)}>
+              {spin ? 'Stop' : 'Spin'}
+            </button>
+          </div>
+
+        </Html>
       </Canvas>
+
 
 
 
@@ -87,12 +97,12 @@ const Scene = (props) => {
     <>
       <pointLight color="#f6f3ea" position={[17, 0, 9]} intensity={1.5} />
       {/* <ambientLight intensity={0.5} /> */}
-      <Earth openDrawerWithTitle={props.openDrawerWithTitle}/>
-      <Stars 
-        radius={300} 
+      <Earth openDrawerWithTitle={props.openDrawerWithTitle} spin={props.spin} setSpin={props.setSpin} />
+      <Stars
+        radius={300}
         depth={60}
         count={20000}
-        factor={7} 
+        factor={7}
         saturation={0}
         fade={true}
       />
