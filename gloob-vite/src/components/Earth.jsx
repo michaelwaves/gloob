@@ -33,7 +33,7 @@ export default function Earth({ spin, setSpin, ...props }) {
     // clock stars counting when app rendered
 
     if (spin) {
-      earthRef.current.rotation.y += 0.002;
+      earthRef.current.rotation.y += 0.005;
     }
   });
 

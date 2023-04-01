@@ -13,10 +13,11 @@ import Ambulance from './components/Ambulance'
 import Atmosphere from './components/Atmosphere'
 import { useThree } from "@react-three/fiber";
 //material ui
-import { Drawer, Box, Typography } from '@mui/material'
+import { Drawer, Box, Typography, Button } from '@mui/material'
 
 //components
 import Dalle from './components/Dalle'
+import DrawerContent from './components/DrawerContent'
 
 const CameraSettings = () => {
   const { camera } = useThree()
@@ -40,6 +41,7 @@ function App() {
 
   const [count, setCount] = useState(1)
   const [trees, setTrees] = useState([])
+  const [spin, setSpin] = useState(false)
 
 
   function randomIntFromInterval(min, max) { // min and max included 
@@ -52,8 +54,6 @@ function App() {
     setDrawerTitle(title)
   }
 
-  const [spin, setSpin] = useState(false) // Spin the earth on click
-
   useEffect(() => {
     const randx = randomIntFromInterval(-10, 10)
     const randy = randomIntFromInterval(-10, 10)
@@ -64,18 +64,10 @@ function App() {
 
   return (
     <>
-      <Drawer
-        open={openDrawer}
-        anchor='right'
-        onClose={() => setOpenDrawer(false)}
-
-        sx={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
-      >
-        <Box>
-          <Typography>{drawerTitle}</Typography>
-        </Box>
-      </Drawer>
-
+      <Typography sx={{position: 'absolute', top: 0, left: 0, color: 'white', textTransform: 'uppercase', fontWeight: 700}} variant="h5">
+        Environment
+      </Typography>
+      <DrawerContent openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} drawerTitle={drawerTitle} />
       <Canvas>
         <Suspense fallback={null}>
           <CameraSettings />
@@ -83,19 +75,12 @@ function App() {
           <Scene openDrawerWithTitle={openDrawerWithTitle} spin={spin} setSpin={setSpin} />
           {/* <Ambulance /> */}
         </Suspense>
-        <Html>
-          <div className='fixed top-0 left-0'>
-            <button
-              onClick={() => setSpin(!spin)}>
-              {spin ? 'Stop' : 'Spin'}
-            </button>
-          </div>
-
-        </Html>
+    
       </Canvas>
 
-
-
+      <Button onClick={() => setSpin(!spin)} sx={{position: 'absolute', bottom: 0, mb: 2}} variant="contained">
+        {spin ? 'Stop' : 'Spin'}
+      </Button>
 
     </>
   )
