@@ -7,12 +7,17 @@ import { OPENAI_API_KEY } from "../APIKey";
 import PublicIcon from '@mui/icons-material/Public';
 
 
-export default function GPT() {
+export default function GPT({location}) {
     const openai = new OpenAIApi(new Configuration({
         apiKey: OPENAI_API_KEY,
     }));
     const [prompt, setPrompt] = useState("");
-    const [messages, setMessages] = useState([{ role: "assistant", content: "Hello, how can I help you?" }]);
+    const [messages, setMessages] = useState([
+        {role: "system", content: "please keep the subject of the conversation on " + location + "with a focus on sustainability and the environment."},
+        { role: "assistant", content: "Hello, how can I help you?" },
+        
+    
+    ]);
 
 
     const messagesEndRef = useRef()
@@ -28,8 +33,8 @@ export default function GPT() {
         const newMessages = []
         const oldMessages = messages
 
-        let m = 'Lorem ipsum I goood and nice'
-        newMessages.push({ role: "user", content: m })
+        //let m = 'Lorem ipsum I goood and nice'
+        newMessages.push({ role: "user", content: message })
         setMessages([...oldMessages, ...newMessages]);
         console.log(prompt)
         const response = await openai.createChatCompletion({
