@@ -43,3 +43,32 @@ const handleSubmit = async (e) => {
   setMessages([...oldMessages, ...newMessages]);
   setPrompt("");
 }
+
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  if (messages === []) {
+      const message = prompt
+      const newMessages = []
+      const oldMessages = messages
+      newMessages.push({ role: "user", content: message })
+      setMessages([...oldMessages, ...newMessages]);
+      console.log(prompt)
+  }
+  try {
+      const response = await openai.createChatCompletion({
+          model: "gpt-3.5-turbo",
+          messages: messages,
+      });
+      console.log(response)
+      const completion = response.data.choices[0].message.content;
+      const newMessages = []
+      const oldMessages = messages
+      newMessages.push({ role: "user", content: message })
+      newMessages.push({ role: "assistant", content: completion })
+      setMessages([...oldMessages, ...newMessages]);
+      setPrompt("");
+  } catch (error) {
+      console.error(error);
+
+  }
+}

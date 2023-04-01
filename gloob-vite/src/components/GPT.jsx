@@ -32,9 +32,9 @@ export default function GPT() {
         <div>
 
             <div className="flex flex-col justify-center space-y-2 w-1/2">
-                <form onSubmit={handleSubmit} className="flex flex-row justify-center items-center">
+                <form onSubmit={handleSubmit} className="space-x-3 p-2 flex flex-row justify-center items-center">
                     <input type="text" name="prompt" value={prompt}
-                        className="p-2 rounded-full bg-white border-solid border-2 border-gray-300"
+                        className="input-box"
                         onChange={(e) => setPrompt(e.target.value)} />
                     <button className="rounded-full bg-white hover:rounded-xl" type="submit">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

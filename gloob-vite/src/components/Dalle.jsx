@@ -45,13 +45,17 @@ export default function Dalle({ country, ...props }) {
     }, [ref]);
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="flex flex-col border-2 max-w-prose w-auto border-gray-300 rounded-xl">
+            <form onSubmit={handleSubmit}
+            className="flex flex-row space-x-3 p-2 justify-center">
                 <input type="text" name="prompt" value={prompt}
+                    className="input-box"
                     onChange={(e) => setPrompt(e.target.value)} />
-                <button type="submit">Generate Image!</button>
+                <button type="submit" className="rounded-xl ">Generate Image!</button>
             </form>
-            <img src={url} onClick={downloadPng} ref={ref} />
+            <img src={url} onClick={downloadPng}
+                className="rounded-xl w-1/2 h-auto"
+                ref={ref} />
         </div>
     )
 }
