@@ -10,12 +10,8 @@ import Earth from './components/Earth'
 import Tree from './components/Tree'
 import Ambulance from './components/Ambulance'
 
-<<<<<<< HEAD
 //material ui
-import { Drawer } from '@mui/material'
-=======
-import {Box, Drawer, Typography} from '@mui/material'
->>>>>>> d74ba49e0ceeea3e170f65a1a889834bdcfe8857
+import { Drawer, Box, Typography } from '@mui/material'
 
 //components
 import Dalle from './components/Dalle'
@@ -67,29 +63,14 @@ function App() {
         </Box>
       </Drawer>
 
+      <Canvas>
+        <OrbitControls></OrbitControls>
+        <Scene openDrawerWithTitle={openDrawerWithTitle} />
+        <Ambulance />
+      </Canvas>
 
-        <Canvas>
-          <OrbitControls></OrbitControls>
-          <Scene openDrawerWithTitle={openDrawerWithTitle} />
-          <Ambulance />
-        </Canvas>
-
-      </div>
-<<<<<<< HEAD
-
-    </div>
-=======
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          tree count is {count}
-        </button>
-        <p>
-          Click to add a random <code>TREE</code>
-        </p>
-      </div> */}
 
     </>
->>>>>>> d74ba49e0ceeea3e170f65a1a889834bdcfe8857
   )
 }
 
@@ -98,7 +79,7 @@ const Scene = (props) => {
   return (
     <>
       <ambientLight intensity={0.5} />
-      <Earth openDrawerWithTitle={props.openDrawerWithTitle}/>
+      <Earth openDrawerWithTitle={props.openDrawerWithTitle} />
       <Stars />
     </>
   )
