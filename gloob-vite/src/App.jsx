@@ -41,7 +41,7 @@ function App() {
 
   const [count, setCount] = useState(1)
   const [trees, setTrees] = useState([])
-  const [spin, setSpin] = useState(false)
+  const [spin, setSpin] = useState(true)
 
 
   function randomIntFromInterval(min, max) { // min and max included 
@@ -64,21 +64,29 @@ function App() {
 
   return (
     <>
-      <Typography sx={{position: 'absolute', top: 0, left: 0, color: 'white', textTransform: 'uppercase', fontWeight: 700}} variant="h5">
-        Environment
+      <Typography sx={{position: 'absolute', top: 0, left: 0, color: 'white', textTransform: 'uppercase', fontWeight: 700}} variant="h4">
+        GLOOB
       </Typography>
       <DrawerContent openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} drawerTitle={drawerTitle} />
       <Canvas>
         <Suspense fallback={null}>
           <CameraSettings />
-          <OrbitControls enableZoom={false}></OrbitControls>
+          {/* <OrbitControls enableZoom={false}></OrbitControls> */}
           <Scene openDrawerWithTitle={openDrawerWithTitle} spin={spin} setSpin={setSpin} />
           {/* <Ambulance /> */}
         </Suspense>
     
       </Canvas>
 
-      <Button onClick={() => setSpin(!spin)} sx={{position: 'absolute', bottom: 0, mb: 2}} variant="contained">
+      <Button onClick={() => setSpin(!spin)} 
+        sx={{position: 'absolute', bottom: 0, mb: 2, backgroundColor: 'green', 
+        '&:hover': {
+          backgroundColor: 'green', 
+          border: 'solid 1px white'
+          }
+        }} 
+        variant="contained"
+      >
         {spin ? 'Stop' : 'Spin'}
       </Button>
 
