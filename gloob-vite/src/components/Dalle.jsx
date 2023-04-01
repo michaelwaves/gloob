@@ -7,7 +7,7 @@ export default function Dalle({ country, ...props }) {
     const [prompt, setPrompt] = useState("");
     const picturePrompt = `draw a beautiful picture of trees and wildlife found in ${country}`
     const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "",
     });
     const openai = new OpenAIApi(configuration);
     const [url, setUrl] = useState("");

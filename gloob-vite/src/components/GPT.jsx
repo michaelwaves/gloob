@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function GPT() {
     const openai = new OpenAIApi(new Configuration({
-        apiKey: "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",
+        apiKey: "",
     }));
     const [prompt, setPrompt] = useState("");
     const [messages, setMessages] = useState([{ role: "assistant", content: "Hello, how can I help you?" }]);
