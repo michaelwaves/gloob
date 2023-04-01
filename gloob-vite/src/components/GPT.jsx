@@ -13,7 +13,7 @@ export default function GPT({location}) {
     }));
     const [prompt, setPrompt] = useState("");
     const [messages, setMessages] = useState([
-        {role: "system", content: "please keep the subject of the conversation on " + location + "with a focus on sustainability and the environment."},
+        {role: "system", content: "please keep the subject of the conversation on " + location + " with a focus on sustainability and the environment."},
         { role: "assistant", content: "Hello, how can I help you?" },
         
     
