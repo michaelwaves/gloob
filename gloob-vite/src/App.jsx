@@ -12,7 +12,7 @@ import Tree from './components/Tree'
 import Ambulance from './components/Ambulance'
 import { useThree } from "@react-three/fiber";
 //material ui
-import { Drawer, Box, Typography } from '@mui/material'
+import { Drawer, Box, Typography, Button } from '@mui/material'
 
 //components
 import Dalle from './components/Dalle'
@@ -40,6 +40,7 @@ function App() {
 
   const [count, setCount] = useState(1)
   const [trees, setTrees] = useState([])
+  const [spin, setSpin] = useState(false)
 
 
   function randomIntFromInterval(min, max) { // min and max included 
@@ -73,19 +74,12 @@ function App() {
           <Scene openDrawerWithTitle={openDrawerWithTitle} spin={spin} setSpin={setSpin} />
           {/* <Ambulance /> */}
         </Suspense>
-        <Html>
-          <div className='fixed top-0 left-0'>
-            <button
-              onClick={() => setSpin(!spin)}>
-              {spin ? 'Stop' : 'Spin'}
-            </button>
-          </div>
-
-        </Html>
+    
       </Canvas>
 
-
-
+      <Button onClick={() => setSpin(!spin)} sx={{position: 'absolute', bottom: 0, mb: 2}} variant="contained">
+        {spin ? 'Stop' : 'Spin'}
+      </Button>
 
     </>
   )
