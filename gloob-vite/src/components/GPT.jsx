@@ -28,8 +28,8 @@ export default function GPT() {
         const newMessages = []
         const oldMessages = messages
 
-        let m = 'Lorem ipsum I goood and nice'
-        newMessages.push({ role: "user", content: m })
+        //let m = 'Lorem ipsum I goood and nice'
+        newMessages.push({ role: "user", content: message })
         setMessages([...oldMessages, ...newMessages]);
         console.log(prompt)
         const response = await openai.createChatCompletion({
