@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, TextField, Box, Grid, Typography } from "@mui/material";
+import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, TextField, Box, Grid, Typography, Divider } from "@mui/material";
 import { useState } from "react";
 import GPT from "./GPT";
 
@@ -35,7 +35,7 @@ export default function ModalContent (props) {
 
             {
                 togglePictures ? (
-                    <DialogContent sx={{textAlign: 'center', color: 'white'}}>
+                    <DialogContent sx={{textAlign: 'center', color: 'white', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
                         <DialogContentText sx={{color: 'white', mb: 2}}>
                             Guess the year this picture was taken
                         </DialogContentText>
@@ -81,7 +81,7 @@ export default function ModalContent (props) {
 
                             {
                                 props.data?.pictures?.map((element, i) => (
-                                    <Grid item xs={4} >
+                                    <Grid item xs={4} key={i}>
                                         <img
                                             src={element?.img}
                                             style={{width: '100%', textAlign: 'center', borderRadius: 1}}
@@ -105,10 +105,18 @@ export default function ModalContent (props) {
 
                             <Grid xs={7} item>
                                 <Typography sx={{color: 'white', textAlign: 'center'}}>
-                                    Percentage decrease in humid primary forest between {props.data?.pictures[0].year} and {props.data?.pictures[2].year}: {props.data?.percentageDecrease}%
+                                    Percentage decrease in tree cover between {props.data?.pictures[0].year} and {props.data?.pictures[2].year}: {props.data?.percentageDecrease}%
                                 </Typography>
                             </Grid>
                         </Grid>
+
+                        <Divider sx={{ borderBottomWidth: 3, borderColor: 'white', mx: 5,  my: 2 }} />
+                        <Typography variant="h6" sx={{textAlign: 'center', color: 'white'}}>
+                            Learn more
+                        </Typography>
+                        <Typography variant="body1" sx={{textAlign: 'center', color: 'white', mb: 2}}>
+                            Ask Glooby any questions you may have
+                        </Typography>
                         <GPT/>
                     </DialogContent>
                     
