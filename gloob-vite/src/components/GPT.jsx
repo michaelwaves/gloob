@@ -14,17 +14,14 @@ export default function GPT({location}) {
     const [messages, setMessages] = useState([
         {role: "system", content: "please keep the subject of the conversation on " + location + " with a focus on sustainability and the environment."},
         { role: "assistant", content: "Hello, how can I help you?" },
-        
     
     ]);
-
 
     const messagesEndRef = useRef()
 
     const scrollToBottom = () => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
     }
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -58,9 +55,9 @@ export default function GPT({location}) {
         <Box sx={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
            
             <Box sx={{height: 200,  width: '90%', overflowY: 'auto'}}>
-                {messages.map((message) => {
+                {messages.map((message, i) => {
                     return (
-                        <Box sx={{display: 'flex', alignItems: 'center', m: 1}}>
+                        <Box sx={{display: 'flex', alignItems: 'center', m: 1}} key={i}>
                             {
                                 message.role === 'assistant' && <PublicIcon sx={{color: 'white', mr: 0.5}}/>
                             }
@@ -87,7 +84,8 @@ export default function GPT({location}) {
                             color: 'white'
                         }
                     }}
-                    style={{width: '90%', color: 'white', borderRadius: 20}}
+                    sx={{width: '90%', color: 'white', border: 'solid white', borderRadius: 5}}
+                
                 />
                 <Button type="submit" sx={{borderRadius: 25}}>
                     <SendIcon/>
