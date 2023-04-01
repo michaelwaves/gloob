@@ -1,5 +1,6 @@
 import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, TextField, Box, Grid, Typography } from "@mui/material";
 import { useState } from "react";
+import GPT from "./GPT";
 
 import Image1 from '../assets/images/KI_2020.png'
 
@@ -108,7 +109,7 @@ export default function ModalContent (props) {
                                 </Typography>
                             </Grid>
                         </Grid>
-
+                        <GPT/>
                     </DialogContent>
                 )
             }

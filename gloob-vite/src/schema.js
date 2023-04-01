@@ -307,13 +307,13 @@ export const data = {
         zoom: 3,
         coordinates: [
             {
-                coordinate: ['long', 'lat'], 
+                coordinate: ['long', 'lat'],
                 data: {
                     title: "Deforestation",
                     description: "what the image is",
                     pictures: [
                         {
-                            img: "src", 
+                            img: "src",
                             year: "number_yearPictureTale"
                         }
                     ]
