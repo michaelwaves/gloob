@@ -3,6 +3,7 @@ import { useState } from "react";
 import GPT from "./GPT";
 
 import Image1 from '../assets/images/KI_2020.png'
+import Dalle from "./Dalle";
 
 export default function ModalContent (props) {
 
@@ -36,13 +37,15 @@ export default function ModalContent (props) {
             {
                 togglePictures ? (
                     <DialogContent sx={{textAlign: 'center', color: 'white', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
-                        <DialogContentText sx={{color: 'white', mb: 2}}>
-                            Guess the year this picture was taken
-                        </DialogContentText>
+                    
                         <img
                             src={props.data !== '' ? props.data?.pictures[Math.floor(Math.random() * 3)].img: null}
                             style={{width: '60%', textAlign: 'center', borderRadius: 10}}
                         />
+
+                        <DialogContentText sx={{color: 'white', mt: 2}}>
+                            Guess the year this picture was taken
+                        </DialogContentText>
                         <form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} onSubmit={handleSubmit}>
                             <TextField
                                 type="number"
@@ -53,7 +56,7 @@ export default function ModalContent (props) {
                                         color: 'white'
                                     }
                                 }}
-                                sx={{color: 'white', mt: 2, mb: 1}}
+                                sx={{color: 'white', mt: 2, mb: 1, border: 'solid white', borderRadius: 5}}
                             />
                             <Button
                                 type="submit" 
@@ -115,9 +118,16 @@ export default function ModalContent (props) {
                             Learn more
                         </Typography>
                         <Typography variant="body1" sx={{textAlign: 'center', color: 'white', mb: 2}}>
-                            Ask Glooby any questions you may have
+                            Ask Glooby any questions you may have on this topic
                         </Typography>
                         <GPT location={props.data?.title}/>
+
+                        <Divider sx={{ borderBottomWidth: 3, borderColor: 'white', mx: 5, my: 3 }} />
+                        <Typography variant="h6" sx={{textAlign: 'center', color: 'white'}}>
+                            Make some art!
+                        </Typography>
+
+                        <Dalle location={props.data?.title}/>
                     </DialogContent>
                     
                 )
