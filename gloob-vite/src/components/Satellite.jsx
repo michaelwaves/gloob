@@ -50,7 +50,7 @@ export default function Satellite(props) {
           <mesh name="Cylinder_1" geometry={nodes.Cylinder_1.geometry} material={materials.gloob} />
           <mesh name="Cylinder_2" geometry={nodes.Cylinder_2.geometry} material={materials.continent} />
         </group>
-        <mesh name="Cube" geometry={nodes.Cube.geometry} material={materials.continent_white} position={[-0.38, -0.13, -0.08]} scale={0.19} />
+        <mesh name="Cube" geometry={nodes.Cube.geometry} material={materials.continent_white} position={[0, -0.13, -0.08]} scale={0.19} />
         <group name="Plane" position={[0, 0, -1.59]} scale={[0.48, 1, 1]}>
           <mesh name="Plane_1" geometry={nodes.Plane_1.geometry} material={materials.grey} />
           <mesh name="Plane_2" geometry={nodes.Plane_2.geometry} material={materials.water_realistic} />
