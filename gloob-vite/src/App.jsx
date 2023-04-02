@@ -22,6 +22,7 @@ import Dalle from './components/Dalle'
 import DrawerContent from './components/DrawerContent'
 import GPT from './components/GPT'
 import Verbwire from './components/Verbwire'
+import Satellite from './components/Satellite'
 
 const CameraSettings = () => {
   const { camera } = useThree()
@@ -85,7 +86,7 @@ function App() {
       <Canvas>
         <Suspense fallback={null}>
           <CameraSettings />
-          <OrbitControls enableZoom={false}></OrbitControls>
+          {/*<OrbitControls enableZoom={false}></OrbitControls>*/}
           <Scene openDrawerWithTitle={openDrawerWithTitle} spin={spin} setSpin={setSpin} />
           {/* <Ambulance /> */}
         </Suspense>
@@ -105,10 +106,6 @@ function App() {
         {spin ? 'Stop' : 'Spin'}
       </Button>
 
-      {/* <Dalle />
-      <GPT location={"british columbia"} />
-      <Verbwire /> */}
-      
     </>
   )
 }
@@ -121,7 +118,7 @@ const Scene = (props) => {
       {/* <ambientLight intensity={0.5} /> */}
       <Earth openDrawerWithTitle={props.openDrawerWithTitle} spin={props.spin} setSpin={props.setSpin} />
       <Atmosphere spin={props.spin} />
-      <Trees />
+      <Satellite spin={props.spin}/>
       <Stars
         radius={300}
         depth={60}

@@ -4,18 +4,18 @@ import { useState, useRef, useCallback } from "react";
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
 
-import { Button, CircularProgress } from "@mui/material";
+import { Button, CircularProgress, Box } from "@mui/material";
 
 //let OPENAI_API_KEY  = 123
 
 import { OPENAI_API_KEY } from "../APIKey";
 
 //let OPENAI_API_KEY = 123
-export default function Dalle({country, ...props }) {
+export default function Dalle({location, ...props }) {
     const [prompt, setPrompt] = useState("");
     const [loading, setLoading] = useState(false);
-    const picturePrompt = `draw a beautiful picture of trees in ${country} in an abstract impressionist style`
-    const pessimisticPrompt = `draw a picture of deforestation in ${country}  in an abstract impressionist style`
+    const picturePrompt = `draw an oil painting of a beautiful, sunny, bright picture of a healthy forest in ${location}`
+    const pessimisticPrompt = `draw a picture of deforestation in ${location}  in an abstract impressionist style`
     const configuration = new Configuration({
         apiKey: OPENAI_API_KEY,
     });
@@ -74,34 +74,36 @@ export default function Dalle({country, ...props }) {
                     value={prompt}
                     className="input-box"
                     onChange={(e) => setPrompt(e.target.value)} /> */}
-                <Button onClick={()=>handleClick(picturePrompt)} variant="contained" 
-                    sx={{borderRadius: 10, backgroundColor: 'green',
+                <Button onClick={()=>handleClick(picturePrompt)} 
+                    variant="contained" 
+                    sx={{borderRadius: 1, textTransform: 'none',backgroundColor: '#008000',
                         '&:hover': {
-                        backgroundColor: 'green',
-                        border: 'solid 1px white'
+                            backgroundColor: '#004d00'
                         }
                     }}
                 >Save the trees!</Button>
-                <Button onClick={()=>handleClick(pessimisticPrompt)} variant="contained" 
-                    sx={{borderRadius: 10, backgroundColor: 'red',
-                        '&:hover': {
-                        backgroundColor: 'red',
-                        border: 'solid 1px white'
-                        }
+                <Button onClick={()=>handleClick(pessimisticPrompt)} 
+                    variant="contained" 
+                    sx={{borderRadius: 1, textTransform: 'none',backgroundColor: '#cc0000',
+                    '&:hover': {
+                        backgroundColor: '#800000',
+                    }
                     }}
                 >Do nothing and let Glooby down</Button>
             </div>
 
+            <Box sx={{height: 270, my: 1, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+
             {
                 loading ? (
-                    <CircularProgress size='large' sx={{color:"white"}}/>
+                    <CircularProgress size={50} sx={{color: "white", textAlign: 'center'}}/>
                 ): (
                     <img src={url} onClick={downloadImage}
-                    className="rounded-xl w-1/2 h-auto m-auto"
+                        className="rounded-xl w-1/2 h-auto m-auto"
                     ref={ref} />
                 )
             }
-            
+            </Box>
         </div>
     )
 }
