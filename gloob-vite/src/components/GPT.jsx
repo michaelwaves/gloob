@@ -6,7 +6,7 @@ import { Button, Box, TextField } from "@mui/material";
 
 //let OPENAI_API_KEY  = 123
 
-import { OPENAI_API_KEY } from "../APIKey";
+//import { OPENAI_API_KEY } from "../APIKey";
 
 import PublicIcon from '@mui/icons-material/Public';
 
