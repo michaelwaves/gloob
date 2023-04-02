@@ -1,13 +1,16 @@
-import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, TextField, Box, Grid, Typography, Divider } from "@mui/material";
+import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, TextField, Box, Grid, Typography, Divider, CircularProgress } from "@mui/material";
 import { useState } from "react";
 import GPT from "./GPT";
-
-import Image1 from '../assets/images/KI_2020.png'
 import Dalle from "./Dalle";
+
+import {TWILIO_SID, TWILIO_AUTH_TOKEN, FROM_PHONE_NUMBER} from '../APIKey'
 
 export default function ModalContent (props) {
 
     const [togglePictures, setTogglePictures] = useState(true)
+    const [loadingTwilio, setLoadingTwilio]= useState(false)
+    const [phone, setPhone] = useState('')
+    const [textSent, setTextSent] = useState(false)
 
     let handleSubmit = (e)=> {
         e.preventDefault()
@@ -15,9 +18,52 @@ export default function ModalContent (props) {
     }
 
     let handleClose = () => {
-        console.log('closeeed')
         setTogglePictures(true)
+        setTextSent(false)
+        setPhone('')
         props.close()
+    }
+
+    let sendTwilioMessage = (e) => {
+
+        e.preventDefault()
+
+        setLoadingTwilio(true)
+
+        
+        const accountSid = TWILIO_SID;
+        const authToken = TWILIO_AUTH_TOKEN;
+        const from = FROM_PHONE_NUMBER;
+        const data = new FormData();
+
+        data.append('To', phone);
+        data.append('From', from);
+        //data.append('Body', 'Here is a copy of your custom ad');
+        data.append('Body', props.data?.companies);
+        
+        //data.append('MediaUrl', 'https://demo.twilio.com/owl.png')
+        setLoadingTwilio(true)
+
+
+        fetch('https://api.twilio.com/2010-04-01/Accounts/' + accountSid + '/Messages.json', {
+            method: 'post',
+            body: data,
+            headers: {
+                'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken),
+            },
+        }).then(response => {
+            if (response.ok) {
+                setLoadingTwilio(false)
+                setTextSent(true)
+            } else {
+                console.log('Error sending text message: ' + response.status);
+            }
+
+        }).catch(error => {
+            console.log('Error sending text message: ' + error);
+        });
+
+
     }
 
     return (
@@ -128,6 +174,63 @@ export default function ModalContent (props) {
                         </Typography>
 
                         <Dalle location={props.data?.title}/>
+
+                        <Divider sx={{ borderBottomWidth: 3, borderColor: 'white', mx: 5,  my: 2 }} />
+                        <Typography variant="h5" sx={{textAlign: 'center', color: 'white', mb: 2}}>
+                            Call to action
+                        </Typography>
+                        <Typography variant="body1" sx={{textAlign: 'center', color: 'white', mb: 2}}>
+                            Do your part and adopt sustainable living! Input your phone number below to receive recommendations of country specific up-and-coming sustainable companies and products.
+                        </Typography>
+
+
+                        {
+                            !textSent ? (
+                                <Box>
+
+                                    <Typography variant="body2" sx={{textAlign: 'center', color: 'white'}}>
+                                        Format: 1234567890
+                                    </Typography>
+                        
+                                    <form onSubmit={sendTwilioMessage} style={{ color: 'white',display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                                        <TextField 
+                                            value={phone}
+                                            type='tel' 
+                                            sx={{my: 2}}
+                                            InputProps={{
+                                                sx: {
+                                                    color: 'white'
+                                                }
+                                            }}
+                                            required
+                                            onChange={(e) => setPhone(e.target.value)}
+                        
+                                        />
+                                        <Button disabled={loadingTwilio} sx={{textAlign: 'center', width: 100, backgroundColor: 'green',
+                                            '&:hover': {
+                                                backgroundColor: 'green',
+                                                border: 'solid 1px white'
+                                            }}} variant="contained" 
+                                            type="submit"
+                                        >
+                                            {
+                                                !loadingTwilio ? (
+                                                    'Send'
+                                                ): (
+                                                    <CircularProgress size={25} sx={{color: 'white'}}/>
+                                                )
+                                            }
+                                        </Button>
+                                    </form>
+
+                                </Box>
+                                ): (
+                                    <Typography sx={{textAlign: 'center', py: 10, color: 'white'}}>
+                                        A text message has been sent to you !
+                                    </Typography>
+                                )
+                            }
+
                     </DialogContent>
                     
                 )
