@@ -55,7 +55,7 @@ export default function GPT({location}) {
         <Box sx={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
            
             <Box sx={{height: 200,  width: '90%', overflowY: 'auto'}}>
-                {messages.map((message, i) => {
+                {messages.slice(1).map((message, i) => {
                     return (
                         <Box sx={{display: 'flex', alignItems: 'center', m: 1}} key={i}>
                             {
