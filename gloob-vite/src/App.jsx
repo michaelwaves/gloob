@@ -21,7 +21,6 @@ import { Drawer, Box, Typography, Button } from '@mui/material'
 import Dalle from './components/Dalle'
 import DrawerContent from './components/DrawerContent'
 import GPT from './components/GPT'
-import Verbwire from './components/Verbwire'
 import Satellite from './components/Satellite'
 
 import logo from '../src/assets/images/logo.png'
