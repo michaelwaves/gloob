@@ -15,20 +15,21 @@ export default function GPT({location}) {
         apiKey: OPENAI_API_KEY,
     }));
     const [prompt, setPrompt] = useState("");
+    const [disabledSubmit, setDisabledSubmit] = useState(false)
     const [messages, setMessages] = useState([
         {role: "system", content: "please keep the subject of the conversation on " + location + " with a focus on sustainability and the environment."},
         { role: "assistant", content: "Hello, how can I help you?" },
-    
     ]);
 
     const messagesEndRef = useRef()
 
     const scrollToBottom = () => {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "center"})
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setDisabledSubmit(true)
         const message = prompt
         const newMessages = []
         const oldMessages = messages
@@ -46,6 +47,8 @@ export default function GPT({location}) {
         newMessages.push({ role: "assistant", content: completion })
         setMessages([...oldMessages, ...newMessages]);
         setPrompt("");
+        setDisabledSubmit(false)
+        //scrollToBottom()
        
     }
 
@@ -91,7 +94,7 @@ export default function GPT({location}) {
                     sx={{width: '90%', color: 'white', border: 'solid white', borderRadius: 5}}
                 
                 />
-                <Button type="submit" sx={{borderRadius: 25}}>
+                <Button type="submit" sx={{borderRadius: 25}} disabled={disabledSubmit}>
                     <SendIcon/>
                 </Button>
             </form>

@@ -22,6 +22,8 @@ import DrawerContent from './components/DrawerContent'
 import GPT from './components/GPT'
 import Verbwire from './components/Verbwire'
 
+import logo from '../src/assets/images/logo.png'
+
 const CameraSettings = () => {
   const { camera } = useThree()
   camera.position.set(0, 0, 15)
@@ -67,8 +69,13 @@ function App() {
 
   return (
     <>
-      <Typography sx={{ position: 'absolute', top: 0, left: 0, color: 'white', textTransform: 'uppercase', fontWeight: 700 }} variant="h5">
-        Environment
+      <img src={logo} style={{ position: 'absolute', top: 10, left: 10, width: 250}} />
+      <Typography sx={{ position: 'absolute', top: 110, left: 20, color: 'white', textTransform: 'uppercase', fontWeight: 700 }} variant="h6">
+        Planting the seeds of awareness!
+      </Typography>
+
+      <Typography sx={{color: 'white', position: 'absolute', top: 160, left: 20, width: 300, textAlign: 'justify'}}>
+      Trees have been our planet's pillars for a very long time…and now they are in danger. Due to anthropogenic activities, whether agriculture, urbanization, illegal logging, or forest fires, tree cover is decreasing at unprecedented rates. Gloob aims to showcase these changes over the past 2 decades, and with that raise awareness of the growing issue.
       </Typography>
       <DrawerContent openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} drawerTitle={drawerTitle} />
       <Canvas>
