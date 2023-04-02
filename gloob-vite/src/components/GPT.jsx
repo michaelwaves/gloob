@@ -2,6 +2,7 @@ import { Configuration, OpenAIApi } from "openai";
 import { useState, useRef, useEffect } from "react";
 import SendIcon from '@mui/icons-material/Send';
 import { Button, Box, TextField } from "@mui/material";
+import glooby from "/glooby.png"
 
 
 //let OPENAI_API_KEY  = 123
@@ -67,7 +68,7 @@ export default function GPT({location}) {
                     return (
                         <Box sx={{display: 'flex', alignItems: 'center', m: 1}} key={i}>
                             {
-                                message.role === 'assistant' && <PublicIcon sx={{color: 'white', mr: 0.5}}/>
+                                message.role === 'assistant' && <img src={glooby} className={"w-12 h-12"}></img>
                             }
                             <div className={"max-w-prose p-2 h-auto rounded-xl " + (message.role == "assistant" ? " bg-slate-400 ml-0 mr-auto" : " bg-blue-300 ml-auto mr-0")}>
                                 <p>{message.content}</p>
