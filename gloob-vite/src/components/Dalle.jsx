@@ -6,6 +6,7 @@ import { toPng } from 'html-to-image';
 
 import { Button, CircularProgress, Box, IconButton } from "@mui/material";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import SearchIcon from '@mui/icons-material/Search';
 
 //let OPENAI_API_KEY  = 123
 
@@ -67,23 +68,9 @@ export default function Dalle({location, ...props }) {
             })
     }, [ref]);*/
 
-    let saveImage3 = () => {
+    let checkImage = () => {
         let imageT = document.getElementById('dalle-image')
-        console.log(imageT)
         saveAs(imageT.src, 'image.png')
-    }
-
-    let saveImage = () => {
-        let image = document.getElementById('image-generated')
-
-        toPng(image)
-        .then(dataURL => {
-            download(dataURL, 'image.png')
-        })
-        .catch((err) => {
-            console.log("An error occurred")
-        })
-        
     }
 
     return (
@@ -130,9 +117,9 @@ export default function Dalle({location, ...props }) {
                         {
                             url !== '' && (
                                 <IconButton sx={{textAlign: 'center', mx: 'auto', color: 'white', my: 1.5}}
-                                    onClick={saveImage}
+                                    onClick={checkImage}
                                 >
-                                    <FileDownloadIcon/>
+                                    <SearchIcon/>
                                 </IconButton>
                             )
                         }
