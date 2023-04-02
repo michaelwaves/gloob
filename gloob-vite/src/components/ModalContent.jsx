@@ -123,7 +123,7 @@ export default function ModalContent (props) {
                         <GPT location={props.data?.title}/>
 
                         <Divider sx={{ borderBottomWidth: 3, borderColor: 'white', mx: 5, my: 3 }} />
-                        <Typography variant="h6" sx={{textAlign: 'center', color: 'white'}}>
+                        <Typography variant="h6" sx={{textAlign: 'center', color: 'white', mb: 1}}>
                             Make some art!
                         </Typography>
 

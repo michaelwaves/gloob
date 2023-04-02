@@ -94,9 +94,6 @@ function App() {
         {spin ? 'Stop' : 'Spin'}
       </Button>
 
-      {/* <Dalle />
-      <GPT location={"british columbia"} />
-      <Verbwire /> */}
     </>
   )
 }

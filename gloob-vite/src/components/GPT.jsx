@@ -3,6 +3,9 @@ import { useState, useRef, useEffect } from "react";
 import SendIcon from '@mui/icons-material/Send';
 import { Button, Box, TextField } from "@mui/material";
 
+
+//let OPENAI_API_KEY  = 123
+
 import { OPENAI_API_KEY } from "../APIKey";
 
 import PublicIcon from '@mui/icons-material/Public';
@@ -55,8 +58,8 @@ export default function GPT({location}) {
        
         <Box sx={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
            
-            <Box sx={{height: 200,  width: '90%', overflowY: 'auto'}}>
-                {messages.map((message, i) => {
+            <Box sx={{height: 400,  width: '90%', overflowY: 'auto'}}>
+                {messages.slice(1).map((message, i) => {
                     return (
                         <Box sx={{display: 'flex', alignItems: 'center', m: 1}} key={i}>
                             {
