@@ -19,7 +19,7 @@ export default function Dalle({location, ...props }) {
     const picturePrompt = `draw an oil painting of a beautiful, sunny, bright picture of a healthy forest in ${location}`
     const pessimisticPrompt = `draw a picture of deforestation in ${location}  in an abstract impressionist style`
     const configuration = new Configuration({
-        apiKey: import.meta.env.OPENAI_API_KEY,
+        apiKey:import.meta.env.VITE_OPENAI_API_KEY,
     });
     const openai = new OpenAIApi(configuration);
     const [url, setUrl] = useState("");

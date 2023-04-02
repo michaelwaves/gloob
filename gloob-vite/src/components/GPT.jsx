@@ -6,13 +6,13 @@ import { Button, Box, TextField } from "@mui/material";
 
 //let OPENAI_API_KEY  = 123
 
-//import { OPENAI_API_KEY } from "../APIKey";
+import { OPENAI_API_KEY } from "../APIKey";
 
 import PublicIcon from '@mui/icons-material/Public';
 
 export default function GPT({location}) {
     const openai = new OpenAIApi(new Configuration({
-        apiKey: import.meta.env.OPENAI_API_KEY,
+        apiKey: import.meta.env.VITE_OPENAI_API_KEY,
     }));
     const [prompt, setPrompt] = useState("");
     const [disabledSubmit, setDisabledSubmit] = useState(false)
@@ -29,7 +29,7 @@ export default function GPT({location}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(import.meta.env.OPENAI_API_KEY)
+        console.log(import.meta.env.VITE_OPENAI_API_KEY)
         setDisabledSubmit(true)
         const message = prompt
         const newMessages = []
