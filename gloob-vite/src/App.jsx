@@ -10,6 +10,7 @@ import env from 'react-dotenv'
 //models
 import Earth from './components/Earth'
 import Tree from './components/Tree'
+import Trees from './components/Trees'
 import Ambulance from './components/Ambulance'
 import Atmosphere from './components/Atmosphere'
 import { useThree } from "@react-three/fiber";
@@ -21,6 +22,7 @@ import Dalle from './components/Dalle'
 import DrawerContent from './components/DrawerContent'
 import GPT from './components/GPT'
 import Verbwire from './components/Verbwire'
+import Satellite from './components/Satellite'
 
 import logo from '../src/assets/images/logo.png'
 
@@ -59,11 +61,21 @@ function App() {
     setDrawerTitle(title)
   }
 
+  const urls=[
+    "https://www.every.org/climate.change.fund?viewport=desktop",
+    "https://carbon180.org/donate",
+    "https://www.givingwhatwecan.org/charities/giving-green-fund",
+    "https://www.catf.us/",
+    "https://www.evergreenaction.com/",
+    "https://www.every.org/terrapraxis",
+    "https://www.givingwhatwecan.org/charities/future-cleantech-architects"
+]
   useEffect(() => {
     const randx = randomIntFromInterval(-10, 10)
     const randy = randomIntFromInterval(-10, 10)
     const randz = randomIntFromInterval(-10, 10)
-    setTrees([...trees, <Tree key={trees.length} position={[randx, randy, randz]} />])
+    const wrapCount = count % 6
+    setTrees([...trees, <Tree key={trees.length} position={[randx, randy, randz]} link={urls[wrapCount]}/>])
   }, [count])
 
 
@@ -81,7 +93,7 @@ function App() {
       <Canvas>
         <Suspense fallback={null}>
           <CameraSettings />
-          <OrbitControls enableZoom={false}></OrbitControls>
+          {/*<OrbitControls enableZoom={false}></OrbitControls>*/}
           <Scene openDrawerWithTitle={openDrawerWithTitle} spin={spin} setSpin={setSpin} />
           {/* <Ambulance /> */}
         </Suspense>
@@ -113,6 +125,7 @@ const Scene = (props) => {
       {/* <ambientLight intensity={0.5} /> */}
       <Earth openDrawerWithTitle={props.openDrawerWithTitle} spin={props.spin} setSpin={props.setSpin} />
       <Atmosphere spin={props.spin} />
+      <Satellite spin={props.spin}/>
       <Stars
         radius={300}
         depth={60}

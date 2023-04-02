@@ -10,12 +10,16 @@ import { useFrame } from '@react-three/fiber'
 export default function Tree(props) {
   const { nodes, materials } = useGLTF('/tree.gltf')
   const group = useRef()
+  const tree = useRef()
   useFrame(() => {
-    group.current.rotation.y += 0.01
+    //group.current.rotation.y += 0.005
+    tree.current.rotation.y += 0.01
   })
   return (
-    <group {...props} dispose={null} ref={group}>
-      <group position={[-0.04, -0.02, -0.19]} rotation={[-2.98, -0.49, 1.64]} scale={0.04}>
+    <group {...props} dispose={null} ref={group}
+    onClick={()=>window.open(props.link, "_blank")}
+    >
+      <group ref={tree} position={[-10, -0.02, -0.19]} rotation={[-2.98, -0.49, 1.64]} scale={0.03}>
         <mesh geometry={nodes.Cube002.geometry} material={materials['green.001']} />
         <mesh geometry={nodes.Cube002_1.geometry} material={materials.green} />
         <mesh geometry={nodes.Cube002_2.geometry} material={materials.brown} />

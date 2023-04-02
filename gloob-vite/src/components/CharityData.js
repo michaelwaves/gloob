@@ -30,3 +30,13 @@ export const charityData = [
 },
 
 ]
+
+const urls=[
+    "https://www.every.org/climate.change.fund?viewport=desktop",
+    "https://carbon180.org/donate",
+    "https://www.givingwhatwecan.org/charities/giving-green-fund",
+    "https://www.catf.us/",
+    "https://www.evergreenaction.com/",
+    "https://www.every.org/terrapraxis",
+    "https://www.givingwhatwecan.org/charities/future-cleantech-architects"
+]
