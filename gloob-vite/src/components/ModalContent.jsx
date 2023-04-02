@@ -3,7 +3,7 @@ import { useState } from "react";
 import GPT from "./GPT";
 import Dalle from "./Dalle";
 
-import {TWILIO_SID, TWILIO_AUTH_TOKEN, FROM_PHONE_NUMBER} from '../APIKey'
+//import {TWILIO_SID, TWILIO_AUTH_TOKEN, FROM_PHONE_NUMBER} from '../APIKey'
 
 export default function ModalContent (props) {
 
@@ -31,9 +31,9 @@ export default function ModalContent (props) {
         setLoadingTwilio(true)
 
         
-        const accountSid = TWILIO_SID;
-        const authToken = TWILIO_AUTH_TOKEN;
-        const from = FROM_PHONE_NUMBER;
+        const accountSid = import.meta.env.VITE_TWILIO_SID;
+        const authToken = import.meta.env.VITE_TWILIO_AUTH_TOKEN;
+        const from = import.meta.env.VITE_FROM_PHONE_NUMBER;
         const data = new FormData();
 
         data.append('To', phone);
