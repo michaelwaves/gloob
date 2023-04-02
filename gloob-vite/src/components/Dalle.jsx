@@ -4,9 +4,11 @@ import { useState, useRef, useCallback } from "react";
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
 
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 
-import { OPENAI_API_KEY } from "../APIKey";
+let OPENAI_API_KEY  = 123
+
+//import { OPENAI_API_KEY } from "../APIKey";
 
 //let OPENAI_API_KEY = 123
 export default function Dalle({country, ...props }) {
@@ -89,9 +91,17 @@ export default function Dalle({country, ...props }) {
                     }}
                 >Do nothing and let Glooby down</Button>
             </div>
-            <img src={url} onClick={downloadImage}
-                className="rounded-xl w-1/2 h-auto m-auto"
-                ref={ref} />
+
+            {
+                loading ? (
+                    <CircularProgress size='large'/>
+                ): (
+                    <img src={url} onClick={downloadImage}
+                    className="rounded-xl w-1/2 h-auto m-auto"
+                    ref={ref} />
+                )
+            }
+            
         </div>
     )
 }
