@@ -6,9 +6,7 @@ import { toPng } from 'html-to-image';
 
 import { Button, CircularProgress } from "@mui/material";
 
-let OPENAI_API_KEY  = 123
-
-//import { OPENAI_API_KEY } from "../APIKey";
+import { OPENAI_API_KEY } from "../APIKey";
 
 //let OPENAI_API_KEY = 123
 export default function Dalle({country, ...props }) {
