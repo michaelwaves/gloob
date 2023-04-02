@@ -128,7 +128,7 @@ function App() {
         <span className="text-white p-2 rounded-lg text-lg peer-hover:scale-100 bg-primary-light w-3/4 transition-all duration-100 origin-left scale-0">
         <Typography>
         Click countries to start learning about deforestation! Click the satellite to be beamed 
-        to some organizations doing good work
+        to some organizations doing good work!
         </Typography>
         </span>
       </div>

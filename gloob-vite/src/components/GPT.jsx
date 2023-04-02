@@ -12,7 +12,7 @@ import PublicIcon from '@mui/icons-material/Public';
 
 export default function GPT({location}) {
     const openai = new OpenAIApi(new Configuration({
-        apiKey: OPENAI_API_KEY,
+        apiKey: import.meta.env.OPENAI_API_KEY,
     }));
     const [prompt, setPrompt] = useState("");
     const [disabledSubmit, setDisabledSubmit] = useState(false)
@@ -29,6 +29,7 @@ export default function GPT({location}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(import.meta.env.OPENAI_API_KEY)
         setDisabledSubmit(true)
         const message = prompt
         const newMessages = []
