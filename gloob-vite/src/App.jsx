@@ -15,13 +15,15 @@ import Ambulance from './components/Ambulance'
 import Atmosphere from './components/Atmosphere'
 import { useThree } from "@react-three/fiber";
 //material ui
-import { Drawer, Box, Typography, Button } from '@mui/material'
+import { Drawer, Box, Typography, Button} from '@mui/material'
+import HelpIcon from '@mui/icons-material/Help';
 
 //components
 import Dalle from './components/Dalle'
 import DrawerContent from './components/DrawerContent'
 import GPT from './components/GPT'
 import Satellite from './components/Satellite'
+import Help from './components/Help'
 
 import logo from '../src/assets/images/logo.png'
 
@@ -88,6 +90,7 @@ function App() {
       <Typography sx={{color: 'white', position: 'absolute', top: 160, left: 20, width: 300, textAlign: 'justify'}}>
       Trees have been our planet's pillars for a very long time…and now they are in danger. Due to anthropogenic activities, whether agriculture, urbanization, illegal logging, or forest fires, tree cover is decreasing at unprecedented rates. Gloob aims to showcase these changes over the past 2 decades, and with that raise awareness of the growing issue.
       </Typography>
+      
       <DrawerContent openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} drawerTitle={drawerTitle} />
       <Canvas>
         <Suspense fallback={null}>
@@ -111,7 +114,24 @@ function App() {
       >
         {spin ? 'Stop' : 'Spin'}
       </Button>
-
+      <div className='group w-1/3 absolute bottom-0 left-0 mb-2 ml-5 flex flex-row justify-center items-center space-x-3'>
+      <HelpIcon
+      className='peer bg-primary-light rounded-3xl hover:rounded-xl transition-all duration-100'
+        sx={{
+          width: 70,
+          height: 70,
+          '&:hover': {
+            color: 'white',
+            border: 'solid 1px white'
+          }
+        }}/>
+        <span className="text-white p-2 rounded-lg text-lg peer-hover:scale-100 bg-primary-light w-3/4 transition-all duration-100 origin-left scale-0">
+        <Typography>
+        Click countries to start learning about deforestation! Click the satellite to be beamed 
+        to some organizations doing good work
+        </Typography>
+        </span>
+      </div>
     </>
   )
 }
