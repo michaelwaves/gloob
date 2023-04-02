@@ -4,7 +4,8 @@ import { useState, useRef, useCallback } from "react";
 import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
 
-import { Button, CircularProgress, Box } from "@mui/material";
+import { Button, CircularProgress, Box, IconButton } from "@mui/material";
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 //let OPENAI_API_KEY  = 123
 
@@ -66,6 +67,25 @@ export default function Dalle({location, ...props }) {
             })
     }, [ref]);*/
 
+    let saveImage3 = () => {
+        let imageT = document.getElementById('dalle-image')
+        console.log(imageT)
+        saveAs(imageT.src, 'image.png')
+    }
+
+    let saveImage = () => {
+        let image = document.getElementById('image-generated')
+
+        toPng(image)
+        .then(dataURL => {
+            download(dataURL, 'image.png')
+        })
+        .catch((err) => {
+            console.log("An error occurred")
+        })
+        
+    }
+
     return (
         <div>
             <div 
@@ -92,15 +112,32 @@ export default function Dalle({location, ...props }) {
                 >Do nothing and let Glooby down</Button>
             </div>
 
-            <Box sx={{height: 270, my: 1, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <Box sx={{height: 330, my: 1, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
 
             {
                 loading ? (
                     <CircularProgress size={50} sx={{color: "white", textAlign: 'center'}}/>
                 ): (
-                    <img src={url} onClick={downloadImage}
-                        className="rounded-xl w-1/2 h-auto m-auto"
-                    ref={ref} />
+                    <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+
+                        <div id="image-generated">
+                            <img src={url}
+                                id="dalle-image"
+                                className="rounded-xl w-1/2 h-auto m-auto"
+                            ref={ref} />
+                        </div>
+                        
+                        {
+                            url !== '' && (
+                                <IconButton sx={{textAlign: 'center', mx: 'auto', color: 'white', my: 1.5}}
+                                    onClick={saveImage}
+                                >
+                                    <FileDownloadIcon/>
+                                </IconButton>
+                            )
+                        }
+
+                    </Box>
                 )
             }
             </Box>
